@@ -30,11 +30,12 @@ int main(void)
 			char msg[USART_RX_BUFFER_SIZE];
 			usart_receive_string(msg);
 			
-			if (!strcmp(msg, "Turn ON LED"))
+			if (!strcmp(msg, "1"))
 			{
 				PORTB |= (1 << PORTB0);
 				usart_transmit_string("LED turned ON\n\n");
-			} else if (!strcmp(msg, "Turn OFF LED"))
+				
+			} else if (!strcmp(msg, "0"))
 			{
 				PORTB &= ~(1 << PORTB0);
 				usart_transmit_string("LED turned OFF\n\n");
